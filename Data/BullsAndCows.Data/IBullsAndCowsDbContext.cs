@@ -3,6 +3,7 @@
     using Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using Models.Models;
 
     public interface IBullsAndCowsDbContext
     {

@@ -5,6 +5,8 @@
     using BullsAndCows.Data.Repositories;
     using BullsAndCows.Services.Data.Contracts;
     using System;
+    using BullsAndCows.Data.Models.Enums;
+    using BullsAndCows.Data.Models.Models;
     using Common.Constants;
 
     public class GuessService : IGuessService

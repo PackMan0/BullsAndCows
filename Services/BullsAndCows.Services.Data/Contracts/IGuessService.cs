@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using BullsAndCows.Data.Models;
+    using BullsAndCows.Data.Models.Models;
 
     public interface IGuessService
     {

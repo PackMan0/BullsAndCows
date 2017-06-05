@@ -2,6 +2,7 @@
 {
     using BullsAndCows.Data.Models;
     using System.Linq;
+    using BullsAndCows.Data.Models.Models;
 
     public interface IGamesService
     {

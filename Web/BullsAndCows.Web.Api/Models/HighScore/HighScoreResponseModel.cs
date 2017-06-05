@@ -4,6 +4,7 @@
     using AutoMapper;
     using BullsAndCows.Data.Models;
     using BullsAndCows.Web.Api.Infrastructure.Mappings;
+    using Data.Models.Models;
 
     public class HighScoreResponseModel : IMapFrom<User>, IHaveCustomMappings
     {

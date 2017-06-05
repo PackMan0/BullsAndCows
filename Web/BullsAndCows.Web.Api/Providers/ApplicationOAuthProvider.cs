@@ -14,6 +14,8 @@ using BullsAndCows.Data.Models;
 
 namespace BullsAndCows.Web.Api.Providers
 {
+    using Data.Models.Models;
+
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;

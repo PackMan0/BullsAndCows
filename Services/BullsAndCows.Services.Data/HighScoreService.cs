@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using BullsAndCows.Data.Models;
+    using BullsAndCows.Data.Models.Models;
     using BullsAndCows.Services.Data.Contracts;
     using BullsAndCows.Data.Repositories;
     using Common.Constants;

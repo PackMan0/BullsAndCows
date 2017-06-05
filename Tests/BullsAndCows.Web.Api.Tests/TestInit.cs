@@ -4,6 +4,7 @@
     using Common.Constants;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Data.Models;
+    using Data.Models.Models;
     using Setups;
     using MyTested.WebApi;
 

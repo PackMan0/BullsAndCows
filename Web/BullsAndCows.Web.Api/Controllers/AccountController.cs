@@ -20,6 +20,8 @@ using BullsAndCows.Data.Models;
 
 namespace BullsAndCows.Web.Api.Controllers
 {
+    using Data.Models.Models;
+
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

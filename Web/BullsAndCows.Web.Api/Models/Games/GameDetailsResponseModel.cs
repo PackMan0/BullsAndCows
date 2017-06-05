@@ -7,6 +7,7 @@
     using System.Linq;
     using Guesses;
     using System.Collections.Generic;
+    using Data.Models.Models;
 
     public class GameDetailsResponseModel : IMapFrom<Game>, IHaveCustomMappings
     {

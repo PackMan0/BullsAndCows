@@ -5,6 +5,8 @@
     using Moq;
     using System.Collections.Generic;
     using System.Linq;
+    using Data.Models.Enums;
+    using Data.Models.Models;
 
     public static class Repositories
     {

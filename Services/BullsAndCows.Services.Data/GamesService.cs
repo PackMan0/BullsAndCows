@@ -6,6 +6,8 @@
     using BullsAndCows.Services.Data.Contracts;
     using Common.Constants;
     using System;
+    using BullsAndCows.Data.Models.Enums;
+    using BullsAndCows.Data.Models.Models;
     using Common.Providers;
 
     public class GamesService : IGamesService

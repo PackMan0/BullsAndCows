@@ -3,6 +3,7 @@
     using Models;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Data.Entity;
+    using Models.Models;
 
     public class BullsAndCowsDbContext : IdentityDbContext<User>, IBullsAndCowsDbContext
     {

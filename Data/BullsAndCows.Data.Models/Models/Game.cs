@@ -1,12 +1,12 @@
-﻿namespace BullsAndCows.Data.Models
+﻿namespace BullsAndCows.Data.Models.Models
 {
-    using Common.Constants;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Common.Constants;
 
-    public class Game
+    public class Game : IGame
     {
         private ICollection<Guess> guesses;
 

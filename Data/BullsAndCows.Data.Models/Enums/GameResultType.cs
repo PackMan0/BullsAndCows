@@ -1,4 +1,4 @@
-﻿namespace BullsAndCows.Data.Models
+﻿namespace BullsAndCows.Data.Models.Enums
 {
     public enum GameResultType
     {

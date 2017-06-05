@@ -1,10 +1,10 @@
-﻿namespace BullsAndCows.Data.Models
+﻿namespace BullsAndCows.Data.Models.Models
 {
-    using Common.Constants;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Common.Constants;
 
-    public class Guess
+    public class Guess : IGuess
     {
         [Key]
         public int Id { get; set; }
