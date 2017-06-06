@@ -3,6 +3,7 @@
     using Data.Models;
     using BullsAndCows.Data.Repositories;
     using Data;
+    using Data.Models.Interfaces;
     using Data.Models.Models;
 
     public abstract class BaseService

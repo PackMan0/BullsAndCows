@@ -19,7 +19,7 @@
             return new BullsAndCowsDbContext();
         }
 
-        public IDbSet<IUser> Users { get; set; }
+        public IDbSet<User> Users { get; set; }
         public DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             throw new System.NotImplementedException();

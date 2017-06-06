@@ -63,7 +63,6 @@
     <Compile Include="Models\Guess.cs" />
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IGuess.cs" />
-    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\User.cs" />
   </ItemGroup>

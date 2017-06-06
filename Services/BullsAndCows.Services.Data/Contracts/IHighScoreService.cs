@@ -9,6 +9,6 @@
     {
         void UpdateRank(string userId, bool won);
 
-        IQueryable<IUser> GetLatest();
+        IQueryable<User> GetLatest();
     }
 }

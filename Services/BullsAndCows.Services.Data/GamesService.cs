@@ -41,7 +41,7 @@
 
         public IGame CreateGame(string name, string number, string userId)
         {
-            var newGame = new IGame
+            var newGame = new Game
             {
                 Name = name,
                 GameState = GameState.WaitingForOpponent,

@@ -6,9 +6,8 @@
     using Interfaces;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using IUser = Interfaces.IUser;
 
-    public class User : IdentityUser, IUser
+    public class User : IdentityUser
     {
         private ICollection<IGuess> guesses;
 

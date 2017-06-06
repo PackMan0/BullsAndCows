@@ -10,9 +10,9 @@
 
     public class HighScoreService : IHighScoreService
     {
-        private readonly IRepository<IUser> users;
+        private readonly IRepository<User> users;
 
-        public HighScoreService(IRepository<IUser> users)
+        public HighScoreService(IRepository<User> users)
         {
             this.users = users;
         }
@@ -33,7 +33,7 @@
             this.users.SaveChanges();
         }
 
-        public IQueryable<IUser> GetLatest()
+        public IQueryable<User> GetLatest()
         {
             return this.users
                 .All()

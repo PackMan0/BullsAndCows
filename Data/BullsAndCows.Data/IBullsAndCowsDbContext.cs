@@ -8,7 +8,7 @@
 
     public interface IBullsAndCowsDbContext
     {
-        IDbSet<IUser> Users { get; set; }
+        IDbSet<User> Users { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

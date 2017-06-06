@@ -53,7 +53,7 @@
             var cows = this.GetCows(number, correctNumber);
             var bulls = this.GetBulls(number, correctNumber);
 
-            var newGuess = new IGuess
+            var newGuess = new Guess
             {
                 GameId = gameId,
                 Number = number,

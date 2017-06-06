@@ -4,9 +4,10 @@
     using AutoMapper;
     using BullsAndCows.Data.Models;
     using BullsAndCows.Web.Api.Infrastructure.Mappings;
+    using Data.Models.Interfaces;
     using Data.Models.Models;
 
-    public class HighScoreResponseModel : IMapFrom<IUser>, IHaveCustomMappings
+    public class HighScoreResponseModel : IMapFrom<User>, IHaveCustomMappings
     {
         public string Username { get; set; }
 
@@ -14,8 +15,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<IUser, HighScoreResponseModel>()
-                .ForMember(u => u.Username, opts => opts.MapFrom(u => u.Email));
+            //configuration.CreateMap<User, HighScoreResponseModel>().ForMember(u => u.Username, opts => opts.MapFrom(u => u.Email));
         }
     }
 }
