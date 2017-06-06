@@ -3,11 +3,12 @@
     using Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using Models.Interfaces;
     using Models.Models;
 
     public interface IBullsAndCowsDbContext
     {
-        IDbSet<User> Users { get; set; }
+        IDbSet<IUser> Users { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

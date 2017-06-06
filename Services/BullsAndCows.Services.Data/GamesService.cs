@@ -7,23 +7,24 @@
     using Common.Constants;
     using System;
     using BullsAndCows.Data.Models.Enums;
+    using BullsAndCows.Data.Models.Interfaces;
     using BullsAndCows.Data.Models.Models;
     using Common.Providers;
 
     public class GamesService : IGamesService
     {
         private readonly IHighScoreService highScore;
-        private readonly IRepository<Game> games;
+        private readonly IRepository<IGame> games;
         private readonly IRandomProvider random;
 
-        public GamesService(IHighScoreService highScore, IRepository<Game> games, IRandomProvider random)
+        public GamesService(IHighScoreService highScore, IRepository<IGame> games, IRandomProvider random)
         {
             this.highScore = highScore;
             this.games = games;
             this.random = random;
         }
 
-        public IQueryable<Game> GetPublicGames(int page = 1, string userId = null)
+        public IQueryable<IGame> GetPublicGames(int page = 1, string userId = null)
         {
             return this.games
                 .All()
@@ -38,9 +39,9 @@
                 .Take(GameConstants.GamesPerPage);
         }
 
-        public Game CreateGame(string name, string number, string userId)
+        public IGame CreateGame(string name, string number, string userId)
         {
-            var newGame = new Game
+            var newGame = new IGame
             {
                 Name = name,
                 GameState = GameState.WaitingForOpponent,
@@ -55,7 +56,7 @@
             return newGame;
         }
 
-        public IQueryable<Game> GetGameDetails(int id)
+        public IQueryable<IGame> GetGameDetails(int id)
         {
             return this.games
                 .All()

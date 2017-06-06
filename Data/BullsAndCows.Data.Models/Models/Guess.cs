@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using Common.Constants;
+    using Interfaces;
 
     public class Guess : IGuess
     {
@@ -27,6 +28,6 @@
 
         public int GameId { get; set; }
 
-        public virtual Game Game { get; set; }
+        public virtual IGame IGame { get; set; }
     }
 }

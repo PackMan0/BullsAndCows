@@ -9,7 +9,7 @@
     using System.Collections.Generic;
     using Data.Models.Models;
 
-    public class GameDetailsResponseModel : IMapFrom<Game>, IHaveCustomMappings
+    public class GameDetailsResponseModel : IMapFrom<IGame>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -34,7 +34,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             string userId = null;
-            configuration.CreateMap<Game, GameDetailsResponseModel>()
+            configuration.CreateMap<IGame, GameDetailsResponseModel>()
                 .ForMember(g => g.Blue, opts => opts.MapFrom(g => g.BlueUser == null ? "No blue player yet" : g.BlueUser.Email))
                 .ForMember(g => g.Red, opts => opts.MapFrom(g => g.RedUser.Email))
                 .ForMember(g => g.GameState, opts => opts.MapFrom(g => g.GameState.ToString()))

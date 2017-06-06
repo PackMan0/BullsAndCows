@@ -8,7 +8,7 @@
 
     public interface IUser
     {
-        ICollection<Guess> Guesses { get; set; }
+        ICollection<IGuess> Guesses { get; set; }
         int Rank { get; set; }
 
         Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType);

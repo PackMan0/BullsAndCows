@@ -30,7 +30,7 @@
                 pageAsNumber = 1;
             }
 
-            var userId = this.User.Identity.GetUserId();
+            var userId = this.IUser.Identity.GetUserId();
             var games = this.games
                 .GetPublicGames(pageAsNumber, userId)
                 .ProjectTo<ListedGameResponseModel>()
@@ -42,7 +42,7 @@
         [Authorize]
         public IHttpActionResult Get(int id)
         {
-            var userId = this.User.Identity.GetUserId();
+            var userId = this.IUser.Identity.GetUserId();
             if (!this.games.UserIsPartOfGame(id, userId))
             {
                 return this.BadRequest("You are not part of this game!");
@@ -63,7 +63,7 @@
             var newGame = this.games.CreateGame(
                 model.Name,
                 model.Number,
-                this.User.Identity.GetUserId());
+                this.IUser.Identity.GetUserId());
 
             var gameResult = games
                 .GetGameDetails(newGame.Id)
@@ -79,7 +79,7 @@
         [ValidateModel]
         public IHttpActionResult Put(int id, BaseGameRequestModel model)
         {
-            var userId = this.User.Identity.GetUserId();
+            var userId = this.IUser.Identity.GetUserId();
             if (!this.games.GameCanBeJoinedByUser(id, userId))
             {
                 return this.BadRequest("This game is yours! Do you have two personalities?");
@@ -95,9 +95,9 @@
         [HttpPost]
         [Route("api/games/{id}/guess")]
         [ValidateModel]
-        public IHttpActionResult Guess(int id, BaseGameRequestModel model)
+        public IHttpActionResult IGuess(int id, BaseGameRequestModel model)
         {
-            var userId = this.User.Identity.GetUserId();
+            var userId = this.IUser.Identity.GetUserId();
             if (!this.games.CanMakeGuess(id, userId))
             {
                 return this.BadRequest("Either you are not part of the game or it is not your turn!");

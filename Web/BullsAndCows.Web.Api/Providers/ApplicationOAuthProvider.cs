@@ -34,7 +34,7 @@ namespace BullsAndCows.Web.Api.Providers
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
-            User user = await userManager.FindAsync(context.UserName, context.Password);
+            IUser user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {

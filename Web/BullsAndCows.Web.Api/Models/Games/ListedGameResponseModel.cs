@@ -6,7 +6,7 @@
     using BullsAndCows.Web.Api.Infrastructure.Mappings;
     using Data.Models.Models;
 
-    public class ListedGameResponseModel : IMapFrom<Game>, IHaveCustomMappings
+    public class ListedGameResponseModel : IMapFrom<IGame>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -22,7 +22,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Game, ListedGameResponseModel>()
+            configuration.CreateMap<IGame, ListedGameResponseModel>()
                 .ForMember(g => g.Blue, opts => opts.MapFrom(g => g.BlueUser == null ? "No blue player yet" : g.BlueUser.Email))
                 .ForMember(g => g.Red, opts => opts.MapFrom(g => g.RedUser.Email))
                 .ForMember(g => g.GameState, opts => opts.MapFrom(g => g.GameState.ToString()));

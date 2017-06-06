@@ -59,11 +59,11 @@ namespace BullsAndCows.Web.Api.Controllers
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
         {
-            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(IUser.Identity as ClaimsIdentity);
 
             return new UserInfoViewModel
             {
-                Email = User.Identity.GetUserName(),
+                Email = IUser.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
@@ -81,7 +81,7 @@ namespace BullsAndCows.Web.Api.Controllers
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            IdentityUser user = await UserManager.FindByIdAsync(IUser.Identity.GetUserId());
 
             if (user == null)
             {
@@ -126,7 +126,7 @@ namespace BullsAndCows.Web.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+            IdentityResult result = await UserManager.ChangePasswordAsync(IUser.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
             
             if (!result.Succeeded)
@@ -146,7 +146,7 @@ namespace BullsAndCows.Web.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+            IdentityResult result = await UserManager.AddPasswordAsync(IUser.Identity.GetUserId(), model.NewPassword);
 
             if (!result.Succeeded)
             {
@@ -183,7 +183,7 @@ namespace BullsAndCows.Web.Api.Controllers
                 return BadRequest("The external login is already associated with an account.");
             }
 
-            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(),
+            IdentityResult result = await UserManager.AddLoginAsync(IUser.Identity.GetUserId(),
                 new UserLoginInfo(externalData.LoginProvider, externalData.ProviderKey));
 
             if (!result.Succeeded)
@@ -207,11 +207,11 @@ namespace BullsAndCows.Web.Api.Controllers
 
             if (model.LoginProvider == LocalLoginProvider)
             {
-                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId());
+                result = await UserManager.RemovePasswordAsync(IUser.Identity.GetUserId());
             }
             else
             {
-                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
+                result = await UserManager.RemoveLoginAsync(IUser.Identity.GetUserId(),
                     new UserLoginInfo(model.LoginProvider, model.ProviderKey));
             }
 
@@ -235,12 +235,12 @@ namespace BullsAndCows.Web.Api.Controllers
                 return Redirect(Url.Content("~/") + "#error=" + Uri.EscapeDataString(error));
             }
 
-            if (!User.Identity.IsAuthenticated)
+            if (!IUser.Identity.IsAuthenticated)
             {
                 return new ChallengeResult(provider, this);
             }
 
-            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(IUser.Identity as ClaimsIdentity);
 
             if (externalLogin == null)
             {
@@ -253,7 +253,7 @@ namespace BullsAndCows.Web.Api.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            User user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            IUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -331,7 +331,7 @@ namespace BullsAndCows.Web.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new IUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -360,7 +360,7 @@ namespace BullsAndCows.Web.Api.Controllers
                 return InternalServerError();
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new IUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

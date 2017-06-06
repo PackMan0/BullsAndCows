@@ -3,25 +3,26 @@
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using Interfaces;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using IUser = Data.Models.IUser;
+    using IUser = Interfaces.IUser;
 
     public class User : IdentityUser, IUser
     {
-        private ICollection<Guess> guesses;
+        private ICollection<IGuess> guesses;
 
         public User()
         {
-            this.guesses = new HashSet<Guess>();
+            guesses = new HashSet<IGuess>();
         }
 
         public int Rank { get; set; }
 
-        public virtual ICollection<Guess> Guesses
+        public virtual ICollection<IGuess> Guesses
         {
-            get { return this.guesses; }
-            set { this.guesses = value; }
+            get { return guesses; }
+            set { guesses = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)

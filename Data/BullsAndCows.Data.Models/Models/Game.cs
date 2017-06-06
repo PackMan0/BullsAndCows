@@ -5,14 +5,16 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using Common.Constants;
+    using Enums;
+    using Interfaces;
 
     public class Game : IGame
     {
-        private ICollection<Guess> guesses;
+        private ICollection<IGuess> guesses;
 
         public Game()
         {
-            this.guesses = new HashSet<Guess>();
+            guesses = new HashSet<IGuess>();
         }
 
         [Key]
@@ -28,7 +30,7 @@
         public GameState GameState { get; set; }
 
         public GameResultType GameResult { get; set; }
-        
+
         public string RedUserNumber { get; set; }
 
         public string BlueUserNumber { get; set; }
@@ -38,13 +40,13 @@
         public virtual User RedUser { get; set; }
 
         public string BlueUserId { get; set; }
-        
+
         public virtual User BlueUser { get; set; }
 
-        public virtual ICollection<Guess> Guesses
+        public virtual ICollection<IGuess> Guesses
         {
-            get { return this.guesses; }
-            set { this.guesses = value; }
+            get { return guesses; }
+            set { guesses = value; }
         }
     }
 }

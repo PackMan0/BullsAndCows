@@ -6,7 +6,7 @@
     using BullsAndCows.Web.Api.Infrastructure.Mappings;
     using Data.Models.Models;
 
-    public class GuessDetailsResponseModel : IMapFrom<Guess>, IHaveCustomMappings
+    public class GuessDetailsResponseModel : IMapFrom<IGuess>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -26,8 +26,8 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Guess, GuessDetailsResponseModel>()
-                .ForMember(g => g.Username, opts => opts.MapFrom(g => g.User.Email));
+            configuration.CreateMap<IGuess, GuessDetailsResponseModel>()
+                .ForMember(g => g.Username, opts => opts.MapFrom(g => g.IUser.Email));
         }
     }
 }

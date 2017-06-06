@@ -2,15 +2,16 @@
 {
     using BullsAndCows.Data.Models;
     using System.Linq;
+    using BullsAndCows.Data.Models.Interfaces;
     using BullsAndCows.Data.Models.Models;
 
     public interface IGamesService
     {
-        IQueryable<Game> GetPublicGames(int page = 0, string userId = null);
+        IQueryable<IGame> GetPublicGames(int page = 0, string userId = null);
 
-        Game CreateGame(string name, string number, string userId);
+        IGame CreateGame(string name, string number, string userId);
 
-        IQueryable<Game> GetGameDetails(int id);
+        IQueryable<IGame> GetGameDetails(int id);
 
         bool GameCanBeJoinedByUser(int id, string userId);
 

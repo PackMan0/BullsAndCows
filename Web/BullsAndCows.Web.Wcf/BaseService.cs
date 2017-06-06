@@ -10,9 +10,9 @@
         protected BaseService()
         {
             var db = new BullsAndCowsDbContext();
-            this.Users = new GenericRepository<User>(db);
+            this.Users = new GenericRepository<IUser>(db);
         }
 
-        protected IRepository<User> Users { get; private set; }
+        protected IRepository<IUser> Users { get; private set; }
     }
 }

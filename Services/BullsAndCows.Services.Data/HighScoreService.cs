@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using BullsAndCows.Data.Models;
+    using BullsAndCows.Data.Models.Interfaces;
     using BullsAndCows.Data.Models.Models;
     using BullsAndCows.Services.Data.Contracts;
     using BullsAndCows.Data.Repositories;
@@ -9,9 +10,9 @@
 
     public class HighScoreService : IHighScoreService
     {
-        private readonly IRepository<User> users;
+        private readonly IRepository<IUser> users;
 
-        public HighScoreService(IRepository<User> users)
+        public HighScoreService(IRepository<IUser> users)
         {
             this.users = users;
         }
@@ -32,7 +33,7 @@
             this.users.SaveChanges();
         }
 
-        public IQueryable<User> GetLatest()
+        public IQueryable<IUser> GetLatest()
         {
             return this.users
                 .All()

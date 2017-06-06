@@ -6,28 +6,29 @@
     using BullsAndCows.Services.Data.Contracts;
     using System;
     using BullsAndCows.Data.Models.Enums;
+    using BullsAndCows.Data.Models.Interfaces;
     using BullsAndCows.Data.Models.Models;
     using Common.Constants;
 
     public class GuessService : IGuessService
     {
         private readonly IGamesService games;
-        private readonly IRepository<Guess> guesses;
+        private readonly IRepository<IGuess> guesses;
 
-        public GuessService(IGamesService games, IRepository<Guess> guesses)
+        public GuessService(IGamesService games, IRepository<IGuess> guesses)
         {
             this.games = games;
             this.guesses = guesses;
         }
 
-        public IQueryable<Guess> GetGuessDetails(int id)
+        public IQueryable<IGuess> GetGuessDetails(int id)
         {
             return this.guesses
                 .All()
                 .Where(g => g.Id == id);
         }
 
-        public Guess MakeGuess(int gameId, string number, string userId)
+        public IGuess MakeGuess(int gameId, string number, string userId)
         {
             var game = this.games
                 .GetGameDetails(gameId)
@@ -52,7 +53,7 @@
             var cows = this.GetCows(number, correctNumber);
             var bulls = this.GetBulls(number, correctNumber);
 
-            var newGuess = new Guess
+            var newGuess = new IGuess
             {
                 GameId = gameId,
                 Number = number,

@@ -16,7 +16,7 @@
         {
             NinjectConfig.DependenciesRegistration = kernel =>
             {
-                kernel.Bind<IRepository<User>>().ToConstant(Repositories.GetUsersRepository());
+                kernel.Bind<IRepository<IUser>>().ToConstant(Repositories.GetUsersRepository());
             };
 
             AutoMapperConfig.RegisterMappings(Assemblies.WebApi);
