@@ -14,12 +14,8 @@
         {
         }
 
-        public static BullsAndCowsDbContext Create()
-        {
-            return new BullsAndCowsDbContext();
-        }
-
         public IDbSet<User> Users { get; set; }
+
         public DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             throw new System.NotImplementedException();
@@ -32,7 +28,7 @@
 
         public int SaveChanges()
         {
-            throw new System.NotImplementedException();
+           
         }
 
         public void Dispose()
